@@ -17,7 +17,7 @@ app.use(CartRoutes);
 app.listen(serverPort,async ()=>{
     console.log(`server started on port ${serverPort}`);
     // sequelize.sync({force:true}); //Entire table data got deleted
-//    await init();
+   await init();
 });  
 
 
