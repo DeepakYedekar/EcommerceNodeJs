@@ -1,14 +1,18 @@
-const {serverPort} = require('./config/server.config')
-const express = require('express')
-const { Categories, sequelize, Products, Role } = require('./models')
-const {categoryRoutes, productRoutes, authRoutes, cartRoutes} = require('./routes')
-const app = express()
+const express=require('express');
+const {serverPort}=require('./config/server.config');
+const {categoriresRoutes,ProductsRoutes,AuthRoutes,CartRoutes}=require('./routes');
+const {sequelize,Categories,Products,Role,User}=require('./models');
+require('dotenv').config();
+const app=express();
 
-app.use(express.json())
-app.use(authRoutes)
-app.use(categoryRoutes)
-app.use(productRoutes)
-app.use(cartRoutes)
+app.use(express.json());
+app.use(categoriresRoutes);
+app.use(ProductsRoutes);
+app.use(AuthRoutes);
+app.use(CartRoutes);
+
+
+
 
 app.listen(serverPort,async ()=>{
     console.log(`server started on port ${serverPort}`);
