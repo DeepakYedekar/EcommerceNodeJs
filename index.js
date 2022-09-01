@@ -16,62 +16,75 @@ app.listen(serverPort, async ()=> {
 })
 
 async function init(){
-	try{
-		await sequelize.sync({force: true})
-
-		const defaultProducts = [
+	await sequelize.sync({force:true});
+	
+	let cat=[
 		{
-		    "description":"Nyka best products",
-		    "name" :"MakeUP Kit",
-		    "cost": 870,
-		    "quantity": 20,
-			"CategoryId": 1
+			name:"Shade",
+			description:"About Shade"
 		},
 		{
-    		"description":"Best fragnance",
-		    "name" :"Fogg",
-		    "cost": 280,
-		    "quantity": 20,
-			"CategoryId": 2
+			name:"Home",
+			description:"About Home"
 		},
 		{
-    		"description":"Best for summer holidays",
-		    "name" :"Summer Clothes",
-		    "cost": 1200,
-		    "quantity": 20,
-			"CategoryId": 3
+			name:"Park",
+			description:"About Park"
 		}
-]
-
-		const defaultCategories = [
+	]
+	
+	let pro=[
 		{
-			name : 'Beauty',
-			description: 'All beauty Products'
+			name:"bag",
+			description:"Mens & Womens Shoes",
+			cost:"600",
+			quantity:"100",
+			CategoryId:"1"
 		},
 		{
-			name: 'Fragnance',
-			description: 'All Fragnance Products'
+			name:"necles",
+			description:"Mens & Womens Shoes",
+			cost:"600",
+			quantity:"100",
+			CategoryId:"1"
 		},
 		{
-			name: 'Clothes',
-			description: 'All types of Clothes'
+			name:"HairBands",
+			description:"Mens & Womens Shoes",
+			cost:"600",
+			quantity:"100",
+			CategoryId:"1"
+		},
+		{
+			name:"Trimmer",
+			description:"Mens & Womens Shoes",
+			cost:"600",
+			quantity:"100",
+			CategoryId:"1"
 		}
-		]
-
-		const defaultRoles = [
+	]
+	
+	let defaultRole=[
 		{
-			name : 'User'
+			name:"User"
 		},
 		{
-			name: 'Admin',
+			name:"Admin"
 		}
-		]
-		await Categories.bulkCreate(defaultCategories)
-		await Products.bulkCreate(defaultProducts)
-		await Role.bulkCreate(defaultRoles)
+	]
+	
+	let UserRole=[
+		{
+			"username":"abc123",
+			 "password":"abc123",
+			 "email":"abc123@gmail.com",
+			 "roles":[1,2]
+		 
+		 }
+	]
+	
+	Categories.bulkCreate(cat);
+	Products.bulkCreate(pro);
+	Role.bulkCreate(defaultRole);
+	User.bulkCreate(UserRole);
 	}
-	catch(err){
-		console.log(err)
-	}
-
-}
