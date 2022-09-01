@@ -4,15 +4,15 @@ const {createProduct, getAllProduct,filterBasedOnProduct, getProductOnId, update
 const { validateProductData, verifyToken, isAdmin } = require('../middleware')
 const routes = express.Router()
 
-routes.post('/ecomm/api/v1/products',[validateProductData,verifyToken, isAdmin], createProduct)
+routes.post('/ecom/api/products',[validateProductData,verifyToken, isAdmin], createProduct)
 
-routes.get('/ecomm/api/v1/products', getAllProduct)
+routes.get('/ecom/api/products', getAllProduct)
 
-routes.get('/ecomm/api/v1/products/filter', filterBasedOnProduct)
+routes.get('/ecom/api/products/filter', filterBasedOnProduct)
 
-routes.get('/ecomm/api/v1/products/:id', getProductOnId)
+routes.get('/ecom/api/products/:id', getProductOnId)
 
-routes.put('/ecomm/api/v1/products/:id',[verifyToken, isAdmin], updateProduct)
+routes.patch('/ecom/api/products',[verifyToken, isAdmin], updateProduct)
 
-routes.delete('/ecomm/api/v1/products/:id',[verifyToken, isAdmin], deleteProduct)
+routes.delete('/ecom/api/products/:id',[verifyToken, isAdmin], deleteProduct)
 module.exports = {productRoutes: routes}

@@ -5,8 +5,8 @@ const routes = express.Router()
 
 
 
-routes.put('/ecomm/api/v1/carts/:id',[verifyToken], updateCart)
+routes.put('/ecom/api/carts/:id',[verifyToken], updateCart)
 
-routes.get('/ecomm/api/v1/carts/:id',[verifyToken], getCart)
+routes.get('/ecom/api/carts/:id',[verifyToken], getCart)
 
 module.exports = {cartRoutes : routes}

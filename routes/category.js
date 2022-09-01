@@ -7,14 +7,14 @@ const { checkNameForCategory, verifyToken, isAdmin } = require('../middleware')
 const routes = express.Router()
 
 
-routes.post('/ecomm/api/v1/categories',[checkNameForCategory, verifyToken, isAdmin],createCategory)
+routes.post('/ecom/api/categories',[checkNameForCategory, verifyToken, isAdmin],createCategory)
 
-routes.get('/ecomm/api/v1/categories',getAllCategory)
+routes.get('/ecom/api/categories',getAllCategory)
 
-routes.get('/ecomm/api/v1/categories/:id', getCategoryOnId)
+routes.get('/ecom/api/categories/:id', getCategoryOnId)
 
-routes.put('/ecomm/api/v1/categories/:id',[verifyToken, isAdmin], updateCategory)
+routes.put('/ecom/api/categories/:id',[verifyToken, isAdmin], updateCategory)
 
-routes.delete('/ecomm/api/v1/categories/:id',[verifyToken, isAdmin], deleteCategory)
+routes.delete('/ecom/api/categories/:id',[verifyToken, isAdmin], deleteCategory)
 
 module.exports = {categoryRoutes : routes}
