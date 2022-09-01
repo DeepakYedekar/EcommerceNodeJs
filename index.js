@@ -10,81 +10,83 @@ app.use(categoryRoutes)
 app.use(productRoutes)
 app.use(cartRoutes)
 
-app.listen(serverPort, async ()=> {
-	console.log('server is running on this port', serverPort)
-	await init()
-})
+app.listen(serverPort,async ()=>{
+    console.log(`server started on port ${serverPort}`);
+    await sequelize.sync({force:true});
+   await init();
+});  
+
+
 
 async function init(){
-	await sequelize.sync({force:true});
-	
-	let cat=[
-		{
-			name:"Shade",
-			description:"About Shade"
-		},
-		{
-			name:"Home",
-			description:"About Home"
-		},
-		{
-			name:"Park",
-			description:"About Park"
-		}
-	]
-	
-	let pro=[
-		{
-			name:"bag",
-			description:"Mens & Womens Shoes",
-			cost:"600",
-			quantity:"100",
-			CategoryId:"1"
-		},
-		{
-			name:"necles",
-			description:"Mens & Womens Shoes",
-			cost:"600",
-			quantity:"100",
-			CategoryId:"1"
-		},
-		{
-			name:"HairBands",
-			description:"Mens & Womens Shoes",
-			cost:"600",
-			quantity:"100",
-			CategoryId:"1"
-		},
-		{
-			name:"Trimmer",
-			description:"Mens & Womens Shoes",
-			cost:"600",
-			quantity:"100",
-			CategoryId:"1"
-		}
-	]
-	
-	let defaultRole=[
-		{
-			name:"User"
-		},
-		{
-			name:"Admin"
-		}
-	]
-	
-	let UserRole=[
-		{
-			"username":"abc123",
-			 "password":"abc123",
-			 "email":"abc123@gmail.com",
-			 "roles":[1,2]
-		 
-		 }
-	]
-	
-	Categories.bulkCreate(cat);
-	Products.bulkCreate(pro);
-	Role.bulkCreate(defaultRole);
-	User.bulkCreate(UserRole);
-	}
+
+let cat=[
+    {
+        name:"Shade",
+        description:"About Shade"
+    },
+    {
+        name:"Home",
+        description:"About Home"
+    },
+    {
+        name:"Park",
+        description:"About Park"
+    }
+]
+
+let pro=[
+    {
+        name:"bag",
+        description:"Mens & Womens Shoes",
+        cost:"600",
+        quantity:"100",
+        CategoryId:"1"
+    },
+    {
+        name:"necles",
+        description:"Mens & Womens Shoes",
+        cost:"600",
+        quantity:"100",
+        CategoryId:"1"
+    },
+    {
+        name:"HairBands",
+        description:"Mens & Womens Shoes",
+        cost:"600",
+        quantity:"100",
+        CategoryId:"1"
+    },
+    {
+        name:"Trimmer",
+        description:"Mens & Womens Shoes",
+        cost:"600",
+        quantity:"100",
+        CategoryId:"1"
+    }
+]
+
+let defaultRole=[
+    {
+        name:"User"
+    },
+    {
+        name:"Admin"
+    }
+]
+
+let UserRole=[
+    {
+        "username":"abc123",
+         "password":"abc123",
+         "email":"abc123@gmail.com",
+         "roles":[1,2]
+     
+     }
+]
+
+await Categories.bulkCreate(cat);
+await Products.bulkCreate(pro);
+await Role.bulkCreate(defaultRole);
+await User.bulkCreate(UserRole);
+}
